@@ -7,7 +7,7 @@ Use Case 1: User Registration
     Scenario:
 
         The User (Admin or Member) navigates to the VoteSphere registration page.
-        The system prompts the user to enter a unique username, email and a strong password.
+        The system prompts the user to enter a unique username, email and a strong password and choose their role admin or member.
         The User provides the required information and submits the registration form.
         
     Alternative Flow (Validation Error):
@@ -42,12 +42,15 @@ Use Case 4: Admin Creates a Group
     Scenario:
 
         The Admin navigates to the Group Management section.
-        The system allows the Admin to create a new group by providing a group name.
+        The system allows the Admin to create a new group by providing a group name if they didnot create a group before.
+            (one admin can create only one community)
         The Admin submits the form to create the group.
 
     Alternative Flow (Limitation for Member Role):
 
     If a Member attempts to create a group, the system displays an error message indicating insufficient privileges.
+    If an Admin attempts to create a group, while having a group already created, the system displays an error message 
+    indicating they can only have one group.
 
 
 Use Case 5: Admin Manages Group Members
@@ -63,6 +66,9 @@ Use Case 5: Admin Manages Group Members
     Alternative Flow (Limitation for Member Role):
     If a Member attempts to add or remove members from a group, the system displays an error 
     message indicating insufficient privileges.
+
+    if Admin attempts to add a member who is already in another group, the system displays an error 
+    message indicating user can only be a part of one Group.
 
 Use Case 6: Admin Creates a Poll
     Preconditions:
@@ -89,8 +95,9 @@ Use Case 7: Admin Updates a Poll
 
     The Admin navigates to the Poll Management section.
     The system displays the list of existing polls.
-    The Admin selects a poll and has the option to update the question or options.
+    The Admin selects a poll and has the option to update the options.
     The Admin submits the form to update the poll.
+    the system will automaticaly reset the votes to zero.
 
     Alternative Flow (Limitation for Member Role):
 
@@ -112,7 +119,22 @@ Use Case 8: Admin Deletes a Poll
 
     If a Member attempts to delete a poll, the system displays an error message indicating insufficient privileges.
 
-Use Case 9: Member Casts Votes to Polls
+Use Case 9: Admin Closes a Poll
+    Preconditions:
+
+    The User is logged in with Admin privileges.
+
+    Scenario:
+
+    The Admin navigates to the Poll Management section.
+    The system displays the list of existing polls.
+    The Admin selects a poll and has the option to close it.
+
+    Alternative Flow (Limitation for Member Role):
+
+    If a Member attempts to delete a poll, the system displays an error message indicating insufficient privileges.
+
+Use Case 10: Member Casts Votes to Polls
     Preconditions:
 
     The User is logged in with Member privileges.

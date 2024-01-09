@@ -18,11 +18,11 @@ Requirements:
                 can add and remove member to/from  their group
                 
             Poll Management:
-                Can create, update, and delete tasks within any group.
+                Can create, update, and delete polls within any group.
 
 
 
-    II. Member role should have limited access compared to admins, allowing them to view and manage tasks within assigned groups.
+    II. Member role should have limited access compared to admins, allowing them to view and manage polls within assigned groups.
         Member Role:
             Group Management:
                 Cannot create group.
